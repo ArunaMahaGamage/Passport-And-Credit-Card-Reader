@@ -25,24 +25,25 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     // card io
-    compile 'com.android.support:appcompat-v7:26.+'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'io.card:android-sdk:5.4.0'
-    testCompile 'junit:junit:4.12'
+    
 
 //add the anyline sdk as dependency (maybe adapt version name)
-    compile 'io.anyline:anylinesdk:3.16.0@aar'
-
+    
 
     // Vision API used for simultaneous barcode scanning
-    compile 'com.google.android.gms:play-services-vision:10.0.0'
-
+    
     //include AnylineSDK from maven
     compile 'io.anyline:anylinesdk:3.16.0@aar'
 
 
     //include AnylineSDK from locale libs folder
     //compile(name:'anylinesdk-3.16.0', ext:'aar')
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'io.card:android-sdk:5.4.0'
+    compile 'io.anyline:anylinesdk:3.16.0@aar'
+    compile 'com.google.android.gms:play-services-vision:10.0.0'
+    testCompile 'junit:junit:4.12'
 }
 
 //root section of the file
@@ -51,5 +52,5 @@ repositories {
     flatDir {
         dirs 'libs'
     }
-    maven { url 'https://anylinesdk.blob.core.windows.net/maven/'}
+    maven { url 'https://anylinesdk.blob.core.windows.net/maven/' }
 }

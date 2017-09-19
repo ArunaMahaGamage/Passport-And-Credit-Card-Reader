@@ -35,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),
                         "possition " + i, Toast.LENGTH_LONG).show();
                 if (i == 0) {
-
+                    Intent creditCardReader = new Intent(MainActivity.this, PassportReader.class);
+                    startActivity(creditCardReader);
                 } else if (i == 1) {
                     Intent creditCardReader = new Intent(MainActivity.this, CreditCardReader.class);
                     startActivity(creditCardReader);
