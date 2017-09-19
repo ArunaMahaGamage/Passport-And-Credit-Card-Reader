@@ -1,8 +1,12 @@
 package com.palvision.passportandcreditcardreader;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -24,5 +28,20 @@ public class MainActivity extends AppCompatActivity {
         // Attach the adapter to a ListView
         ListView listView = (ListView) findViewById(R.id.lvUsers);
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getApplicationContext(),
+                        "possition " + i, Toast.LENGTH_LONG).show();
+                if (i == 0) {
+
+                } else if (i == 1) {
+                    Intent creditCardReader = new Intent(MainActivity.this, CreditCardReader.class);
+                    startActivity(creditCardReader);
+                }
+            }
+        });
     }
 }
+
