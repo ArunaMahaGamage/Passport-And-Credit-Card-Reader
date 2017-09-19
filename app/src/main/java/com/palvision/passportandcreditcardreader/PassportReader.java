@@ -1,10 +1,13 @@
 package com.palvision.passportandcreditcardreader;
 
+import android.content.Intent;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import at.nineyards.anyline.camera.CameraController;
 import at.nineyards.anyline.camera.CameraOpenListener;
@@ -17,6 +20,8 @@ public class PassportReader extends AppCompatActivity implements CameraOpenListe
     private static final String TAG = MainActivity.class.getSimpleName();
     private MrzScanView mrzScanView;
     private MrzResultView mrzResultView;
+
+    String IssuingCountryCode, NationalityCountryCode, DocumentNumber, DocumentType, GivenNames, SurNames, DayOfBirth, ExpirationDate, Sex, MrzString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,20 @@ public class PassportReader extends AppCompatActivity implements CameraOpenListe
                 // The Identification includes all the data read from the MRZ
                 // as scanned and the given image shows the scanned ID/Passport
                 mrzResultView.setIdentification(mrzResult.getResult());
+
+                IssuingCountryCode = mrzResult.getResult().getIssuingCountryCode();
+                NationalityCountryCode = mrzResult.getResult().getNationalityCountryCode();
+                DocumentNumber = mrzResult.getResult().getDocumentNumber();
+                DocumentType = mrzResult.getResult().getDocumentType();
+                GivenNames = mrzResult.getResult().getGivenNames();
+                SurNames  = mrzResult.getResult().getSurNames();
+                DayOfBirth = mrzResult.getResult().getDayOfBirth();
+                ExpirationDate = mrzResult.getResult().getExpirationDate();
+                Sex = mrzResult.getResult().getSex();
+                MrzString = mrzResult.getResult().getMrzString();
+
+                passportResult();
+
                 mrzResultView.setVisibility(View.VISIBLE);
             }
 
@@ -104,6 +123,24 @@ public class PassportReader extends AppCompatActivity implements CameraOpenListe
         // (e.g. If there is no camera or the permission is denied)
         // This is useful to present an alternative way to enter the required data if no camera exists.
         throw new RuntimeException(e);
+    }
+
+    public void passportResult() {
+
+        Intent intent = new Intent(PassportReader.this, PassportResult.class);
+
+        intent.putExtra("IssuingCountryCode", IssuingCountryCode);
+        intent.putExtra("NationalityCountryCode", NationalityCountryCode);
+        intent.putExtra("DocumentNumber", DocumentNumber);
+        intent.putExtra("DocumentType", DocumentType);
+        intent.putExtra("GivenNames", GivenNames);
+        intent.putExtra("SurNames", SurNames);
+        intent.putExtra("DayOfBirth", DayOfBirth);
+        intent.putExtra("ExpirationDate", ExpirationDate);
+        intent.putExtra("Sex", Sex);
+        intent.putExtra("MrzString", MrzString);
+
+        startActivity(intent);
     }
 
 }

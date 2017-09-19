@@ -18,7 +18,7 @@
     android:paddingLeft="4dp"
     android:paddingRight="4dp"
     android:paddingTop="16dp"
-    tools:context="com.palvision.mrzscanner.MrzResultView">
+    tools:context="com.palvision.passportandcreditcardreader.MrzResultView">
 
     <TextView
         android:id="@+id/text_type"
