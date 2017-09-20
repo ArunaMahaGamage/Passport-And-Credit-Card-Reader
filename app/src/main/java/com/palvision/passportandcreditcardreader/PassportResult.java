@@ -1,8 +1,15 @@
 package com.palvision.passportandcreditcardreader;
 
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class PassportResult extends AppCompatActivity {
 
@@ -52,12 +59,18 @@ public class PassportResult extends AppCompatActivity {
         mGivenNames.setText("GivenNames : " + GivenNames);
         mSurNames.setText("SurNames : " + SurNames);
 
-        String bDay[] = DayOfBirth.split("[0-9]");
+        char [] bDay = new char[10];
+        for (int i = 0; i < DayOfBirth.length(); i++) {
+            bDay[i] = DayOfBirth.charAt(i);
+        }
+        mDayOfBirth.setText("DayOfBirth : " + bDay[0] + bDay[1] + "/" + bDay[2] + bDay[3] + "/" + bDay[4] + bDay[5]);
 
-     //   mDayOfBirth.setText(bDay[0] );
-    //    mDayOfBirth.setText("DayOfBirth" + DayOfBirth);
+        char [] eDay = new char[10];
+        for (int i = 0; i < ExpirationDate.length(); i++) {
+            eDay[i] = ExpirationDate.charAt(i);
+        }
+        mExpirationDate.setText("ExpirationDate : " + eDay[0] + eDay[1] + "/" + eDay[2] + eDay[3] + "/" + eDay[4] + eDay[5]);
 
-        mExpirationDate.setText("ExpirationDate : " + ExpirationDate);
         mSex.setText("Sex : " + Sex);
         mMrzString.setText("MRZ : " + MrzString);
     }
