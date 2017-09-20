@@ -51,7 +51,12 @@ public class PassportResult extends AppCompatActivity {
         mDocumentType.setText("DocumentType : " + DocumentType);
         mGivenNames.setText("GivenNames : " + GivenNames);
         mSurNames.setText("SurNames : " + SurNames);
-        mDayOfBirth.setText("DayOfBirth" + DayOfBirth);
+
+        String bDay[] = DayOfBirth.split("[0-9]");
+
+     //   mDayOfBirth.setText(bDay[0] );
+    //    mDayOfBirth.setText("DayOfBirth" + DayOfBirth);
+
         mExpirationDate.setText("ExpirationDate : " + ExpirationDate);
         mSex.setText("Sex : " + Sex);
         mMrzString.setText("MRZ : " + MrzString);
